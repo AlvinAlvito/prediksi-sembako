@@ -27,7 +27,6 @@
                             <th>Intercept (a)</th>
                             <th>Koefisien (b)</th>
                             <th>MAPE (%)</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,10 +34,9 @@
                             <tr onclick="window.location='{{ url('/admin/detail-produk/' . $item->produk->id) }}'" style="cursor: pointer;">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->produk->nama_produk }}</td>
-                                <td>{{ number_format($item->produk->harga_satuan) }}</td>
                                 <td>{{ $item->persamaan }}</td>
-                                <td>{{ round($item->a, 2) }}</td>
-                                <td>{{ round($item->b, 2) }}</td>
+                                <td>{{ round($item->a, 3) }}</td>
+                                <td>{{ round($item->b, 3) }}</td>
                                 <td>{{ $item->mape }}%</td>
                             </tr>
                         @empty

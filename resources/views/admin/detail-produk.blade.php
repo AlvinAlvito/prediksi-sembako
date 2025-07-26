@@ -75,6 +75,45 @@
                                 </table>
                             </div>
                         </div>
+
+                        <div class="card mb-4">
+    <div class="card-header bg-warning text-dark">
+        <i class="bi bi-calculator me-2"></i> Tabel Evaluasi MAPE (Manual)
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>X</th>
+                    <th>Bulan</th>
+                    <th>Aktual</th>
+                    <th>Prediksi</th>
+                    <th>Selisih</th>
+                    <th>%Error</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($evaluasi as $row)
+                    <tr>
+                        <td>{{ $row['x'] }}</td>
+                        <td>{{ $row['bulan'] }}</td>
+                        <td>{{ $row['aktual'] }}</td>
+                        <td>{{ number_format($row['prediksi'], 2) }}</td>
+                        <td>{{ number_format($row['selisih'], 2) }}</td>
+                        <td>{{ number_format($row['error_percent'], 2) }}%</td>
+                    </tr>
+                @endforeach
+            </tbody>
+            <tfoot>
+                <tr class="fw-bold bg-light">
+                    <td colspan="5" class="text-end">MAPE:</td>
+                    <td>{{ number_format($mape_manual, 2) }}%</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
                     </div>
                     <div class="col-6">
                         <div class="card mb-4">
@@ -127,42 +166,38 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-        const dataAktual = {!! json_encode(array_values($aktual)) !!};
-        const dataPrediksi = {!! json_encode(array_values($prediksi)) !!};
-        const labelAktual = {!! json_encode(array_keys($aktual)) !!};
-        const labelPrediksi = {!! json_encode(array_keys($prediksi)) !!};
-        const allLabels = [...labelAktual, ...labelPrediksi];
+        const dataAktual = {!! json_encode(array_values($aktual)) !!}; // Jan–Jun
+        const dataPrediksi = {!! json_encode(array_values($prediksi)) !!}; // Jul–Des
+        const namaProduk = {!! json_encode($produk->nama_produk) !!};
 
-        const chart = new ApexCharts(document.querySelector("#grafikPrediksi"), {
+        new ApexCharts(document.querySelector("#grafikPrediksi"), {
             chart: {
                 type: 'line',
                 height: 350
             },
             series: [{
-                    name: 'Data Aktual',
+                    name: 'Aktual Jan–Jun',
                     data: dataAktual
                 },
                 {
-                    name: 'Prediksi',
-                    data: Array(labelAktual.length).fill(null).concat(dataPrediksi)
+                    name: 'Prediksi Jul–Des',
+                    data: dataPrediksi
                 }
             ],
             xaxis: {
-                categories: allLabels
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
             },
             stroke: {
                 curve: 'smooth'
             },
-            colors: ['#1E90FF', '#FF5733'], // biru & merah
             title: {
-                text: 'Grafik Penjualan Sembako',
+                text: `Perbandingan Data Aktual & Prediksi - ${namaProduk}`,
                 align: 'center'
             },
+            colors: ['#1E90FF', '#FF5733'],
             markers: {
                 size: 4
             }
-        });
-
-        chart.render();
+        }).render();
     </script>
 @endsection

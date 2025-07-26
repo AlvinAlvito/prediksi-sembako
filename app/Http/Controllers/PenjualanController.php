@@ -50,22 +50,30 @@ class PenjualanController extends Controller
 
         $b = ($n * $sum_xy - $sum_x * $sum_y) / ($n * $sum_x2 - pow($sum_x, 2));
         $a = ($sum_y - $b * $sum_x) / $n;
-        $persamaan = "Y = " . round($a, 2) . " + " . round($b, 2) . "X";
 
-        // 3. Prediksi bulan Juli (X=7) hingga Desember (X=12)
+        // simpan nilai asli a dan b tanpa dibulatkan ke dalam database
+        $persamaan = "Y = " . round($a, 3) . " + " . round($b, 3) . "X";
+
+        // 3. Prediksi bulan Jan–Des (X=1 s.d. 12)
         $prediksi = [];
-        for ($i = 7; $i <= 12; $i++) {
-            $prediksi[] = round($a + $b * $i);
+        $prediksi_desimal = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $nilai = $a + $b * $i;
+            $prediksi[] = round($nilai); // untuk disimpan ke DB
+            $prediksi_desimal[] = round($nilai, 3); // untuk MAPE
         }
 
-        // 4. Hitung MAPE (evaluasi akurasi)
+
+        // 4. Hitung MAPE (evaluasi akurasi, pakai desimal)
         $total_error = 0;
         foreach ($x as $i => $xi) {
-            $y_pred = $a + $b * $xi;
+            $y_pred = $prediksi_desimal[$i]; // prediksi aslinya
             $error = abs($y[$i] - $y_pred) / max($y[$i], 1); // hindari div 0
             $total_error += $error;
         }
         $mape = round(($total_error / $n) * 100, 2);
+
 
         // 5. Simpan ke hasil_regresis
         HasilRegresi::create([
@@ -74,13 +82,20 @@ class PenjualanController extends Controller
             'b' => $b,
             'persamaan' => $persamaan,
             'mape' => $mape,
-            'jul' => $prediksi[0],
-            'agu' => $prediksi[1],
-            'sep' => $prediksi[2],
-            'okt' => $prediksi[3],
-            'nov' => $prediksi[4],
-            'des' => $prediksi[5],
+            'jan' => $prediksi[0],
+            'feb' => $prediksi[1],
+            'mar' => $prediksi[2],
+            'apr' => $prediksi[3],
+            'mei' => $prediksi[4],
+            'jun' => $prediksi[5],
+            'jul' => $prediksi[6],
+            'agu' => $prediksi[7],
+            'sep' => $prediksi[8],
+            'okt' => $prediksi[9],
+            'nov' => $prediksi[10],
+            'des' => $prediksi[11],
         ]);
+
 
         return redirect()->route('penjualan.index')->with('success', 'Data berhasil ditambahkan dan diproses.');
     }

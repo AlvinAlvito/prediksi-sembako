@@ -17,6 +17,12 @@ return new class extends Migration {
             $table->float('b');
             $table->text('persamaan');
             $table->float('mape')->nullable();
+            $table->integer('jan');
+            $table->integer('feb');
+            $table->integer('mar');
+            $table->integer('apr');
+            $table->integer('mei');
+            $table->integer('jun');
             $table->integer('jul');
             $table->integer('agu');
             $table->integer('sep');
@@ -25,6 +31,7 @@ return new class extends Migration {
             $table->integer('des');
             $table->timestamps();
         });
+
 
     }
 

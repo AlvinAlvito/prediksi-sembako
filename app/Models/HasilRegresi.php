@@ -15,6 +15,12 @@ class HasilRegresi extends Model
         'b',
         'persamaan',
         'mape',
+        'jan',
+        'feb',
+        'mar',
+        'apr',
+        'mei',
+        'jun',
         'jul',
         'agu',
         'sep',
@@ -22,6 +28,7 @@ class HasilRegresi extends Model
         'nov',
         'des',
     ];
+
 
     // Relasi ke ProdukPenjualan
     public function produk()
