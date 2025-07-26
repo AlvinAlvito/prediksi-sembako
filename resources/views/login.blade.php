@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PT SAWIT ZUHERI</title>
+    <title>Prediksi Sembako</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <i class="bi-back"></i>
-                    <span>PT SAWIT ZUHERI</span>
+                    <span>Prediksi Sembako</span>
                 </a>
 
                 <div class="d-lg-none ms-auto me-4">
@@ -113,19 +113,21 @@
                 <div class="row">
 
                     <div class="col-lg-10 col-12 mx-auto text-center">
-                        <h1 class="text-white">Sistem Gaji & Bonus Otomatis Pegawai Sawit</h1>
+                        <h1 class="text-white">Sistem Prediksi Penjualan Sembako</h1>
 
-                        <h6 class="text-white mt-3">PT SAWIT ZUHERI - Efisiensi dalam Manajemen Tenaga Kerja Perkebunan
+                        <h6 class="text-white mt-3">
+                            Visualisasi & Prediksi Penjualan Menggunakan Metode Regresi Linier Sederhana
                         </h6>
 
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-light btn-lg mt-4">Masuk Dashboard</a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal"
+                            class="btn btn-light btn-lg mt-4">
+                            Masuk Dashboard
+                        </a>
                     </div>
 
                 </div>
             </div>
         </section>
-
-
 
         <section class="featured-section">
             <div class="container">
@@ -135,15 +137,15 @@
                         <div class="custom-block bg-white shadow-lg">
                             <div class="d-flex">
                                 <div>
-                                    <h5 class="mb-2">Manajemen Pegawai</h5>
-                                    <p class="mb-0">Sistem ini memungkinkan admin untuk menambahkan data pegawai
-                                        seperti nama, usia, dan alamat dengan cepat dan mudah.</p>
+                                    <h5 class="mb-2">Manajemen Data Penjualan</h5>
+                                    <p class="mb-0">Admin dapat menambahkan data penjualan per bulan untuk setiap
+                                        produk sembako, seperti jumlah dan harga satuan.</p>
                                 </div>
                                 <span class="badge bg-success rounded-pill ms-auto">✓</span>
                             </div>
 
                             <img src="images/topics/undraw_Educator_re_ju47.png" class="custom-block-image img-fluid"
-                                alt="Add User">
+                                alt="Input Data Penjualan">
                         </div>
                     </div>
 
@@ -151,15 +153,15 @@
                         <div class="custom-block bg-white shadow-lg">
                             <div class="d-flex">
                                 <div>
-                                    <h5 class="mb-2">Input Data Pemasukan</h5>
-                                    <p class="mb-0">Catat pemasukan harian seperti jumlah buah, sektor, jarak, cuaca,
-                                        dan kondisi jalan dengan antarmuka yang praktis.</p>
+                                    <h5 class="mb-2">Prediksi Otomatis</h5>
+                                    <p class="mb-0">Sistem menghitung prediksi penjualan 6 bulan ke depan secara
+                                        otomatis dengan metode regresi linier sederhana.</p>
                                 </div>
-                                <span class="badge bg-warning rounded-pill ms-auto">✓</span>
+                                <span class="badge bg-primary rounded-pill ms-auto">✓</span>
                             </div>
 
-                            <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid"
-                                alt="Input Data">
+                            <img src="images/topics/colleagues-working-cozy-office-medium-shot.png"
+                                class="custom-block-image img-fluid" alt="Prediksi">
                         </div>
                     </div>
 
@@ -167,22 +169,21 @@
                         <div class="custom-block bg-white shadow-lg">
                             <div class="d-flex">
                                 <div>
-                                    <h5 class="mb-2">Perhitungan Gaji & Bonus</h5>
-                                    <p class="mb-0">Gaji pokok dan bonus dihitung otomatis berdasarkan data lapangan
-                                        dengan logika sistem fuzzy.</p>
+                                    <h5 class="mb-2">Visualisasi dan Analisis</h5>
+                                    <p class="mb-0">Tampilkan grafik perbandingan data aktual dan hasil prediksi per
+                                        produk, serta nilai akurasi (MAPE).</p>
                                 </div>
                                 <span class="badge bg-info rounded-pill ms-auto">✓</span>
                             </div>
 
                             <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid"
-                                alt="Finance">
+                                alt="Visualisasi Data">
                         </div>
                     </div>
 
                 </div>
             </div>
         </section>
-
 
         <section class="timeline-section section-padding mt-5" id="section_3">
             <div class="section-overlay"></div>
@@ -202,23 +203,11 @@
                                 </div>
 
                                 <li>
-                                    <h4 class="text-white mb-3">1. Tambahkan Data Pegawai</h4>
+                                    <h4 class="text-white mb-3">1. Input Data Penjualan Produk</h4>
                                     <p class="text-white">
-                                        Admin dapat menambahkan data pegawai perusahaan PT SAWIT ZUHERI yang meliputi
-                                        nama, usia, dan alamat.
-                                        Data ini menjadi dasar dalam penghitungan pemasukan dan penggajian.
-                                    </p>
-                                    <div class="icon-holder">
-                                        <i class="bi-person-plus"></i>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <h4 class="text-white mb-3">2. Input Data Pemasukan</h4>
-                                    <p class="text-white">
-                                        Selanjutnya admin menginput data pemasukan buah sawit berdasarkan hasil panen
-                                        pegawai, seperti nama pegawai, sektor, tanggal, jumlah buah (Kg), jarak lokasi,
-                                        kondisi cuaca, dan kondisi jalan.
+                                        Admin menginput data penjualan untuk masing-masing produk sembako dari bulan
+                                        Januari hingga Juni.
+                                        Data ini meliputi nama produk, harga satuan, dan jumlah penjualan per bulan.
                                     </p>
                                     <div class="icon-holder">
                                         <i class="bi-pencil-square"></i>
@@ -226,27 +215,40 @@
                                 </li>
 
                                 <li>
-                                    <h4 class="text-white mb-3">3. Sistem Hitung Gaji & Bonus Otomatis</h4>
+                                    <h4 class="text-white mb-3">2. Sistem Proses Regresi Linier</h4>
                                     <p class="text-white">
-                                        Sistem akan secara otomatis menghitung <strong>Gaji Pokok</strong> dan
-                                        <strong>Bonus</strong> berdasarkan data yang diinput.
-                                        Hasil perhitungan mempertimbangkan faktor cuaca, kondisi jalan, dan jumlah buah
-                                        yang dipanen dengan metode fuzzy sederhana.
+                                        Setelah data disimpan, sistem secara otomatis menghitung persamaan regresi
+                                        linier sederhana
+                                        untuk setiap produk. Nilai koefisien (b), intercept (a), dan MAPE dihitung
+                                        sebagai dasar prediksi.
                                     </p>
                                     <div class="icon-holder">
-                                        <i class="bi-calculator"></i>
+                                        <i class="bi-gear-fill"></i>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <h4 class="text-white mb-3">4. Hasil Gaji & Bonus Ditampilkan</h4>
+                                    <h4 class="text-white mb-3">3. Prediksi Penjualan 6 Bulan ke Depan</h4>
                                     <p class="text-white">
-                                        Output dari sistem berupa daftar gaji dan bonus pegawai secara rinci.
-                                        Total pendapatan dapat langsung dilihat, memudahkan perusahaan dalam manajemen
-                                        keuangan pegawai.
+                                        Berdasarkan persamaan regresi, sistem menghasilkan prediksi penjualan dari bulan
+                                        Juli hingga Desember.
+                                        Hasil ini disimpan dan dapat dilihat dalam bentuk tabel dan grafik.
                                     </p>
                                     <div class="icon-holder">
-                                        <i class="bi-cash-stack"></i>
+                                        <i class="bi-bar-chart-line-fill"></i>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h4 class="text-white mb-3">4. Lihat Visualisasi & Detail Produk</h4>
+                                    <p class="text-white">
+                                        Pengguna dapat melihat detail lengkap untuk setiap produk, termasuk data aktual,
+                                        hasil prediksi,
+                                        nilai MAPE, dan grafik perbandingan. Informasi ini berguna untuk pengambilan
+                                        keputusan bisnis.
+                                    </p>
+                                    <div class="icon-holder">
+                                        <i class="bi-file-earmark-bar-graph"></i>
                                     </div>
                                 </li>
                             </ul>
@@ -255,7 +257,7 @@
 
                     <div class="col-12 text-center mt-5">
                         <p class="text-white">
-                            Ingin tahu lebih lanjut?
+                            Ingin mengetahui prediksi produk Anda?
                             <a href="#" class="btn custom-btn custom-border-btn ms-3">Hubungi Kami</a>
                         </p>
                     </div>
@@ -264,46 +266,51 @@
             </div>
         </section>
 
-
-
     </main>
 
     <footer class="site-footer section-padding">
         <div class="container">
             <div class="row">
 
+                {{-- Brand dan Deskripsi --}}
                 <div class="col-lg-3 col-12 mb-4 pb-2">
                     <a class="navbar-brand mb-2" href="/">
-                        <i class="bi bi-tree-fill"></i>
-                        <span>PT SAWIT ZUHERI</span>
+                        <i class="bi bi-bar-chart-line-fill"></i>
+                        <span>Sembako</span>
                     </a>
-                    <p class="text-white">Sistem manajemen pemasukan harian, gaji, dan bonus pegawai berbasis data
-                        produksi sawit.</p>
+                    <p class="text-white">
+                        Sistem prediksi penjualan sembako menggunakan metode regresi linier sederhana. Membantu
+                        pengambilan keputusan bisnis dengan data yang akurat dan visual.
+                    </p>
                 </div>
 
+                {{-- Navigasi Menu --}}
                 <div class="col-lg-3 col-md-4 col-6">
                     <h6 class="site-footer-title mb-3">Menu</h6>
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item"><a href="/" class="site-footer-link">Beranda</a></li>
-                        <li class="site-footer-link-item"><a href="/pegawai" class="site-footer-link">Data
-                                Pegawai</a></li>
-                        <li class="site-footer-link-item"><a href="/pemasukan" class="site-footer-link">Data
-                                Pemasukan</a></li>
-                        <li class="site-footer-link-item"><a href="/riwayat-kerja" class="site-footer-link">Riwayat
-                                Kerja</a></li>
+                        <li class="site-footer-link-item"><a href="/admin/data-penjualan"
+                                class="site-footer-link">Data Penjualan</a></li>
+                        <li class="site-footer-link-item"><a href="/admin/koefisien"
+                                class="site-footer-link">Koefisien</a></li>
+                        <li class="site-footer-link-item"><a href="/admin/hasil-prediksi"
+                                class="site-footer-link">Hasil Prediksi</a></li>
                     </ul>
                 </div>
 
+                {{-- Kontak --}}
                 <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
                     <h6 class="site-footer-title mb-3">Kontak</h6>
                     <p class="text-white d-flex mb-1">
                         <a href="tel:081234567890" class="site-footer-link">0812-3456-7890</a>
                     </p>
                     <p class="text-white d-flex">
-                        <a href="mailto:admin@sawitzuheri.co.id" class="site-footer-link">admin@sawitzuheri.co.id</a>
+                        <a href="mailto:admin@prediksisembako.id"
+                            class="site-footer-link">admin@prediksisembako.id</a>
                     </p>
                 </div>
 
+                {{-- Bahasa dan Hak Cipta --}}
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -317,7 +324,8 @@
                     </div>
 
                     <p class="copyright-text mt-lg-5 mt-4">
-                        © 2025 PT SAWIT ZUHERI. All rights reserved.<br><br>
+                        © 2025 Prediksi Penjualan Sembako.<br>
+                        All rights reserved.<br><br>
                         Dev by <a rel="nofollow" href="https://avinto.my.id" target="_blank">Alvin Alvito</a>
                     </p>
                 </div>
@@ -325,6 +333,7 @@
             </div>
         </div>
     </footer>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

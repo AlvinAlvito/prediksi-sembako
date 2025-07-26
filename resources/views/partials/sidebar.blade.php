@@ -30,16 +30,10 @@
              <li >
                 <a href="/admin/hasil-prediksi" class="{{ Request::is('/admin/hasil-prediksi') ? 'active' : '' }}">
                     <i class="uil uil-files-landscapes"></i>
-                    <span class="link-name">Data Pemasukan</span>
+                    <span class="link-name">Hasil Prediksi</span>
                 </a>
             </li>
            
-            <li >
-                <a href="/admin/gaji-bonus" class="{{ Request::is('/admin/gaji-bonus') ? 'active' : '' }}">
-                    <i class="uil uil-thumbs-up"></i>
-                    <span class="link-name">Gaji & Bonus</span>
-                </a>
-            </li>
         </ul>
         
 
