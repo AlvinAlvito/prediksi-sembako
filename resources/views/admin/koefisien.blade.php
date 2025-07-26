@@ -32,15 +32,14 @@
                     </thead>
                     <tbody>
                         @forelse ($data as $item)
-                            <tr>
+                            <tr onclick="window.location='{{ url('/admin/detail-produk/' . $item->produk->id) }}'" style="cursor: pointer;">
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->produk->nama_produk }}</td>
                                 <td>{{ number_format($item->produk->harga_satuan) }}</td>
                                 <td>{{ $item->persamaan }}</td>
                                 <td>{{ round($item->a, 2) }}</td>
                                 <td>{{ round($item->b, 2) }}</td>
                                 <td>{{ $item->mape }}%</td>
-                                <td><a href="{{ route('produk.detail', $item->produk->id) }}" class="btn btn-sm btn-info">🔍
-                                        Detail</a></td>
                             </tr>
                         @empty
                             <tr>

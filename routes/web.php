@@ -40,12 +40,14 @@ Route::get('/logout', function () {
 // ===================
 // Dashboard Admin
 // ===================
+use App\Http\Controllers\DashboardController;
+
 Route::get('/admin', function () {
     if (!session('is_admin')) {
         return redirect('/');
     }
-    return view('admin.index');
-})->name('dashboard');
+    return app(DashboardController::class)->index(); // <-- GANTI view() ke controller
+})->name('index');
 
 
 // ===================

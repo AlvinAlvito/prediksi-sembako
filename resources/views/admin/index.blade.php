@@ -3,150 +3,183 @@
     <section class="dashboard">
         <div class="top">
             <i class="uil uil-bars sidebar-toggle"></i>
-
             <div class="search-box">
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Search here...">
             </div>
-
             <img src="/images/profil.png" alt="">
         </div>
+
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
-                    <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Dashboard</span>
+                    <i class="uil uil-chart-line"></i>
+                    <span class="text">Dashboard Penjualan</span>
                 </div>
-
-                <div class="boxes">
-                    <div class="box box1">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span class="text">Total Pegawai</span>
-                        <span class="number">340</span>
-                    </div>
-                    <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Total Mandor</span>
-                        <span class="number">43</span>
-                    </div>
-                    <div class="box box3">
-                        <i class="uil uil-share"></i>
-                        <span class="text">Total Sektor</span>
-                        <span class="number">16</span>
-                    </div>
+            </div>
+            <div class="boxes">
+                <div class="box box1">
+                    <i class="uil uil-thumbs-up"></i>
+                    <span class="text">Total Produk</span>
+                    <span class="number">340</span>
+                </div>
+                <div class="box box2">
+                    <i class="uil uil-comments"></i>
+                    <span class="text">Total Mandor</span>
+                    <span class="number">43</span>
+                </div>
+                <div class="box box3">
+                    <i class="uil uil-share"></i>
+                    <span class="text">Total Sektor</span>
+                    <span class="number">16</span>
                 </div>
             </div>
 
+            {{-- Grafik Chart Apex --}}
             <div class="activity">
-                <div class="title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="text">Grafik Diagram</span>
+                <div class="title mb-3">
+                    <i class="uil uil-chart-bar"></i>
+                    <span class="text">Analisis dan Prediksi</span>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-6 col-sm-12 mb-4">
-                        <span class="h5 d-block text-center mb-2">Jumlah Buah per Sektor</span>
-                        <canvas id="chartSektor"></canvas>
+                    {{-- Chart 1: Total Penjualan per Produk --}}
+                    <div class="col-md-6 mb-4">
+                        <div id="chartTotalProduk"></div>
                     </div>
-                    <div class="col-lg-6 col-sm-12 mb-4">
-                        <span class="h5 d-block text-center mb-2">Jumlah Buah per Pegawai</span>
-                        <canvas id="chartPegawai"></canvas>
+
+                    {{-- Chart 2: Prediksi Jul–Des --}}
+                    <div class="col-md-6 mb-4">
+                        <div id="chartPrediksi"></div>
                     </div>
-                    <div class="col-lg-6 col-sm-12 mb-4">
-                        <span class="h5 d-block text-center mb-2">Jumlah Buah per Cuaca</span>
-                        <canvas id="chartCuaca"></canvas>
+
+                    {{-- Chart 3: MAPE tiap produk --}}
+                    <div class="col-md-6 mb-4">
+                        <div id="chartMape"></div>
                     </div>
-                    <div class="col-lg-6 col-sm-12 mb-4">
-                        <span class="h5 d-block text-center mb-2">Top 5 Pegawai dengan Pendapatan Tertinggi</span>
-                        <canvas id="chartPendapatan"></canvas>
+
+                    {{-- Chart 4: Total penjualan per bulan --}}
+                    <div class="col-md-6 mb-4">
+                        <div id="chartTotalBulan"></div>
+                    </div>
+
+                    {{-- Chart 5: Top 5 Produk Terlaris --}}
+                    <div class="col-md-6 mb-4">
+                        <div id="chartTopProduk"></div>
+                    </div>
+
+                    {{-- Chart 6: Data Aktual vs Prediksi Satu Produk (ambil pertama saja) --}}
+                    <div class="col-md-6 mb-4">
+                        <div id="chartBandingAktual"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- ApexCharts CDN --}}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script>
-        async function fetchChartData(url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return await response.json();
-            } catch (error) {
-                console.error("Error fetching data from " + url + ": ", error);
-                return {
-                    labels: [],
-                    data: []
-                };
+        // Chart 1: Total Penjualan per Produk
+        new ApexCharts(document.querySelector("#chartTotalProduk"), {
+            chart: {
+                type: 'bar'
+            },
+            series: [{
+                name: 'Total Jan–Jun',
+                data: {!! json_encode($totalPerProduk->pluck('total')) !!}
+            }],
+            xaxis: {
+                categories: {!! json_encode($totalPerProduk->pluck('name')) !!}
+            },
+            title: {
+                text: 'Total Penjualan per Produk'
             }
-        }
+        }).render();
 
-        async function renderCharts() {
-            // 1. Buah per sektor
-            const sektor = await fetchChartData('/chart/sektor');
-            new Chart(document.getElementById('chartSektor'), {
-                type: 'doughnut',
-                data: {
-                    labels: sektor.labels,
-                    datasets: [{
-                        data: sektor.data,
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8BC34A']
-                    }]
-                }
-            });
+        // Chart 2: Prediksi per Produk
+        new ApexCharts(document.querySelector("#chartPrediksi"), {
+            chart: {
+                type: 'line'
+            },
+            series: {!! json_encode($prediksiPerProduk) !!},
+            xaxis: {
+                categories: ['Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
+            },
+            title: {
+                text: 'Prediksi Penjualan Jul–Des'
+            }
+        }).render();
 
-            // 2. Buah per pegawai
-            const pegawai = await fetchChartData('/chart/pegawai');
-            new Chart(document.getElementById('chartPegawai'), {
-                type: 'doughnut',
-                data: {
-                    labels: pegawai.labels,
-                    datasets: [{
-                        data: pegawai.data,
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#009688', '#9C27B0']
-                    }]
-                }
-            });
+        // Chart 3: MAPE per Produk
+        new ApexCharts(document.querySelector("#chartMape"), {
+            chart: {
+                type: 'bar'
+            },
+            series: [{
+                name: 'MAPE (%)',
+                data: {!! json_encode($mapePerProduk->pluck('mape')) !!}
+            }],
+            xaxis: {
+                categories: {!! json_encode($mapePerProduk->pluck('name')) !!}
+            },
+            title: {
+                text: 'Tingkat Akurasi (MAPE)'
+            }
+        }).render();
 
-            // 3. Buah per cuaca
-            const cuaca = await fetchChartData('/chart/cuaca');
-            new Chart(document.getElementById('chartCuaca'), {
-                type: 'doughnut',
-                data: {
-                    labels: cuaca.labels,
-                    datasets: [{
-                        data: cuaca.data,
-                        backgroundColor: ['#03A9F4', '#FF5722', '#8BC34A']
-                    }]
-                }
-            });
+        // Chart 4: Total penjualan gabungan per bulan
+        new ApexCharts(document.querySelector("#chartTotalBulan"), {
+            chart: {
+                type: 'line'
+            },
+            series: [{
+                name: 'Total Penjualan',
+                data: {!! json_encode(array_values($totalPerBulan)) !!}
+            }],
+            xaxis: {
+                categories: {!! json_encode(array_keys($totalPerBulan)) !!}
+            },
+            title: {
+                text: 'Tren Penjualan (Jan–Jun)'
+            }
+        }).render();
 
-            // 4. Pendapatan tertinggi
-            const pendapatan = await fetchChartData('/chart/pendapatan-tertinggi');
-            new Chart(document.getElementById('chartPendapatan'), {
-                type: 'bar',
-                data: {
-                    labels: pendapatan.labels,
-                    datasets: [{
-                        label: 'Total Pendapatan',
-                        data: pendapatan.data,
-                        backgroundColor: '#4CAF50'
-                    }]
+        // Chart 5: Top 5 Produk
+        new ApexCharts(document.querySelector("#chartTopProduk"), {
+            chart: {
+                type: 'donut'
+            },
+            series: {!! json_encode($topProduk->pluck('total')) !!},
+            labels: {!! json_encode($topProduk->pluck('name')) !!},
+            title: {
+                text: 'Top 5 Produk Terlaris'
+            }
+        }).render();
+
+        // Chart 6: Banding Aktual & Prediksi (produk pertama)
+        const dataAktual = {!! json_encode(array_values($totalPerBulan)) !!};
+        const produkPertama = {!! json_encode($prediksiPerProduk->first()) !!};
+        new ApexCharts(document.querySelector("#chartBandingAktual"), {
+            chart: {
+                type: 'line'
+            },
+            series: [{
+                    name: 'Aktual Jan–Jun',
+                    data: dataAktual
                 },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                {
+                    name: 'Prediksi Jul–Des',
+                    data: produkPertama.data
                 }
-            });
-        }
-
-        // Jalankan saat halaman siap
-        document.addEventListener('DOMContentLoaded', renderCharts);
+            ],
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
+            },
+            title: {
+                text: `Perbandingan: ${produkPertama.name}`
+            }
+        }).render();
     </script>
 @endsection
