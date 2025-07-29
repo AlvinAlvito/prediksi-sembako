@@ -4,7 +4,7 @@
             <img src="/images/logo.jpg"  alt="">
         </div>
 
-        <span class="logo_name">Prediksi Sembako</span>
+        <span class="logo_name">Toko Gento</span>
     </div>
 
     <div class="menu-items">

@@ -326,7 +326,6 @@
                     <p class="copyright-text mt-lg-5 mt-4">
                         © 2025 Prediksi Penjualan Sembako.<br>
                         All rights reserved.<br><br>
-                        Dev by <a rel="nofollow" href="https://avinto.my.id" target="_blank">Alvin Alvito</a>
                     </p>
                 </div>
 

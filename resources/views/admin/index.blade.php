@@ -21,17 +21,17 @@
                 <div class="box box1">
                     <i class="uil uil-thumbs-up"></i>
                     <span class="text">Total Produk</span>
-                    <span class="number">340</span>
+                    <span class="number">123</span>
                 </div>
                 <div class="box box2">
                     <i class="uil uil-comments"></i>
-                    <span class="text">Total Mandor</span>
-                    <span class="number">43</span>
+                    <span class="text">Total Pegawai</span>
+                    <span class="number">6</span>
                 </div>
                 <div class="box box3">
                     <i class="uil uil-share"></i>
-                    <span class="text">Total Sektor</span>
-                    <span class="number">16</span>
+                    <span class="text">Total Penjualan</span>
+                    <span class="number">1606</span>
                 </div>
             </div>
 
@@ -48,10 +48,6 @@
                         <div id="chartTotalProduk"></div>
                     </div>
 
-                    {{-- Chart 2: Prediksi Jul–Des --}}
-                    <div class="col-md-6 mb-4">
-                        <div id="chartPrediksi"></div>
-                    </div>
 
                     {{-- Chart 3: MAPE tiap produk --}}
                     <div class="col-md-6 mb-4">
@@ -95,20 +91,6 @@
             },
             title: {
                 text: 'Total Penjualan per Produk'
-            }
-        }).render();
-
-        // Chart 2: Prediksi per Produk
-        new ApexCharts(document.querySelector("#chartPrediksi"), {
-            chart: {
-                type: 'line'
-            },
-            series: {!! json_encode($prediksiPerProduk) !!},
-            xaxis: {
-                categories: ['Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
-            },
-            title: {
-                text: 'Prediksi Penjualan Jul–Des'
             }
         }).render();
 
